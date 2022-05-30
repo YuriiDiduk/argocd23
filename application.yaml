@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-argo-application
+  name: spring-petclinic-argo-application
   namespace: argocd
   annotations:
     argocd-image-updater.argoproj.io/image-list: myalias=docker.io/st251/petclinic            
@@ -16,7 +16,7 @@ spec:
     path: dev
   destination: 
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: dev
 
   syncPolicy:
     syncOptions:
