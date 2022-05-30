@@ -1,19 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: spring-petclinic
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: myapp
-  replicas: 1
+      app: spring-petclinic
   template:
     metadata:
       labels:
-        app: myapp
+        app: spring-petclinic
     spec:
       containers:
-      - name: apache
-        image: docker.io/st251/petclinic:64
-        ports:
-        - containerPort: 80
+        - name: spring-petclinic
+          image: docker.io/st251/petclinic:61
+          ports:
+            - name: web
+              containerPort: 8181
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: mysql
+            - name: DB_URL
+              value: jdbc:mysql://db.cwue9qfjqhxh.us-east-1.rds.amazonaws.com:3306/petclinic
