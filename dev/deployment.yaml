@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-petclinic
-          image: docker.io/st251/petclinic:61
+          image: docker.io/st251/petclinic:62
           ports:
             - name: web
               containerPort: 8181
@@ -23,3 +23,5 @@ spec:
               value: mysql
             - name: DB_URL
               value: jdbc:mysql://db.cwue9qfjqhxh.us-east-1.rds.amazonaws.com:3306
+            - name: MYSQL_PASSWORD
+              value: petclinic
