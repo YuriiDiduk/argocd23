@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   type: ExternalName
-  externalName: db.c5sjapmrqkcl.us-east-1.rds.amazonaws.com
+  externalName: db.cwue9qfjqhxh.us-east-1.rds.amazonaws.com
   selector:
     app: externaldb 
  
