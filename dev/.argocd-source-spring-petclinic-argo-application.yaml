@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - docker.io/st251/petclinic:d27dnfiw98r2
