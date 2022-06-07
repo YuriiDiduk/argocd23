@@ -1,0 +1,24 @@
+- name: Update all packages  
+  hosts: all
+  become: true
+  tasks:
+  - name: updating packages
+    command: sudo apt-get update -y
+  - name: Install unzip
+    command: sudo apt-get install unzip   
+
+
+- hosts: jenkins
+  become: true
+  roles:
+    - git
+    - ansible-role-jenkins-master
+    - geerlingguy.java
+    - docker
+    - ansible-role-maven-master
+
+
+  tasks:
+  - name: configuring jenkins user
+    command: sudo usermod -aG sudo jenkins
+

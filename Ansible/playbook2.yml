@@ -1,0 +1,29 @@
+
+- hosts: jenkins    
+  become: true
+  tasks:
+  - name: Installing SSHPASS  
+    command: sudo apt-get install sshpass
+    
+    
+  - name: Transfer the script
+    copy: src=eks_kubectl.sh dest=/home mode=0777 #kubectl 1.20
+
+  - name: Execute the script
+    command: sh /home/eks_kubectl.sh
+    
+  - name: Transfer the composefile
+    copy: src=docker-compose.yml dest=/home mode=0777  
+    
+  - name: Make sure compose service is up
+    docker_compose:
+      project_src: /home
+      files:
+        - "docker-compose.yml"
+      state: present
+
+
+  
+    
+    
+ 
