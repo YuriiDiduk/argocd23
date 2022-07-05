@@ -19,9 +19,15 @@ spec:
             - name: web
               containerPort: 8181
           env:
-            - name: SPRING_PROFILES_ACTIVE
+            - name: SPRING_PROFILES_ACTIVE 
               value: mysql
             - name: DB_URL
-              value: jdbc:mysql://db.cbhsoatk29jg.us-east-1.rds.amazonaws.com:3306
+              valueFrom:
+                secretKeyRef:
+                  name: test-secret
+                  key: url 
             - name: MYSQL_PASSWORD
-              value: petclinic
+              valueFrom:
+                secretKeyRef:
+                  name: test-secret
+                  key: password 
